@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/virtual-archive/static/css/main.a3029f3c.chunk.css",
-    "main.js": "/virtual-archive/static/js/main.89d8dfcb.chunk.js",
-    "main.js.map": "/virtual-archive/static/js/main.89d8dfcb.chunk.js.map",
+    "main.js": "/virtual-archive/static/js/main.b9750e3d.chunk.js",
+    "main.js.map": "/virtual-archive/static/js/main.b9750e3d.chunk.js.map",
     "runtime-main.js": "/virtual-archive/static/js/runtime-main.8ba3e140.js",
     "runtime-main.js.map": "/virtual-archive/static/js/runtime-main.8ba3e140.js.map",
     "static/js/2.4f21414b.chunk.js": "/virtual-archive/static/js/2.4f21414b.chunk.js",
@@ -12,7 +12,7 @@
     "service-worker.js.map": "/virtual-archive/service-worker.js.map",
     "static/css/main.a3029f3c.chunk.css.map": "/virtual-archive/static/css/main.a3029f3c.chunk.css.map",
     "static/js/2.4f21414b.chunk.js.LICENSE.txt": "/virtual-archive/static/js/2.4f21414b.chunk.js.LICENSE.txt",
-    "static/media/avatarIcon.8759c9d5.svg": "/virtual-archive/static/media/avatarIcon.8759c9d5.svg",
+    "static/media/accountLogo.2271fe36.PNG": "/virtual-archive/static/media/accountLogo.2271fe36.PNG",
     "static/media/closeIcon.f42d0089.svg": "/virtual-archive/static/media/closeIcon.f42d0089.svg",
     "static/media/homeIcon.3e88ab8d.svg": "/virtual-archive/static/media/homeIcon.3e88ab8d.svg",
     "static/media/homeIconDesktop.ef318479.svg": "/virtual-archive/static/media/homeIconDesktop.ef318479.svg",
@@ -27,6 +27,6 @@
     "static/js/runtime-main.8ba3e140.js",
     "static/js/2.4f21414b.chunk.js",
     "static/css/main.a3029f3c.chunk.css",
-    "static/js/main.89d8dfcb.chunk.js"
+    "static/js/main.b9750e3d.chunk.js"
   ]
 }
