@@ -18,7 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "virtual-archive/",
   "display": "standalone",
   "theme_color": "#F7F8FA",
   "background_color": "#F7F8FA"
