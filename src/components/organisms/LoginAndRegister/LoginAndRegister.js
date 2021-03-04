@@ -1,52 +1,35 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { gsap } from 'gsap';
-import { MotionPathPlugin } from 'gsap/MotionPathPlugin.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import {
-  firstDocAnimation,
-  secondDocAnimation,
-  thirdDocAnimation,
-  fourthDocAnimation,
-} from 'assets/animations/animations';
+import { LoginDocumentsAnimation } from 'assets/animations/animations';
 import {
   StyledLoginWrapper,
   Header,
-  Form,
   NavWrapper,
   NavItem,
-  UsernameInput,
-  PasswordInput,
-  EmailInput,
-  StyledButton,
   StyledSpan,
   LoginBox,
   LoginImageWrapper,
   ImageWrapper,
-  ActionButton,
-  Exit,
-  ActionButtonArrow,
 } from './LoginAndRegister.styles';
 import { ReactComponent as LoginImage } from 'assets/images/loginImage.svg';
+import LoginForm from 'components/molecules/LoginForm/LoginForm';
+import RegisterForm from 'components/molecules/RegisterForm/RegisterForm';
+import ExitButton from 'components/atoms/ExitButton/ExitButton';
+import ArrowButton from 'components/atoms/ArrowButton/ArrowButton';
+import Modal from 'components/atoms/Modal/Modal';
+import { useSelector } from 'react-redux';
 
-gsap.registerPlugin(MotionPathPlugin);
-
-const LoginAndRegister = () => {
-  const imageRef = useRef(null);
-
+const LoginAndRegister = ({ closeModal }) => {
+  const { isLoginAndRegisterModalOpen } = useSelector((state) => state.modals);
   const [isSignIn, setIsSignIn] = useState(true);
 
-  const goSignIn = () => setIsSignIn(true);
-  const goSignUp = () => setIsSignIn(false);
+  const imageRef = useRef(null);
 
-  const signInHandler = (e) => {
-    e.preventDefault();
+  const chengeSigningMethod = () => {
+    setIsSignIn((prevState) => !prevState);
   };
 
-  const signUpHandler = (e) => {
-    e.preventDefault();
-  };
+  // >>>>>>>>>>>>>> LOGIN AND REGISTRATION LOGIC <<<<<<<<<<<<<<<
 
   useEffect(() => {
     const [elements] = imageRef.current.children;
@@ -55,61 +38,52 @@ const LoginAndRegister = () => {
     const secondDocument = elements.querySelector('#documentTwo');
     const thirdDocument = elements.querySelector('#documentThree');
     const fourthDocument = elements.querySelector('#documentFour');
-
-    gsap.to(firstDocument, firstDocAnimation);
-    gsap.to(secondDocument, secondDocAnimation);
-    gsap.to(thirdDocument, thirdDocAnimation);
-    gsap.to(fourthDocument, fourthDocAnimation);
+    LoginDocumentsAnimation(
+      firstDocument,
+      secondDocument,
+      thirdDocument,
+      fourthDocument
+    );
   }, []);
 
   return (
-    <LoginBox>
-      <Exit>
-        <FontAwesomeIcon icon={faTimes} />
-      </Exit>
-      <LoginImageWrapper>
-        {isSignIn ? (
-          <ActionButton onClick={goSignUp}>
-            Zarejestruj się
-            <ActionButtonArrow />
-          </ActionButton>
-        ) : (
-          <ActionButton onClick={goSignIn}>
-            Zaloguj się
-            <ActionButtonArrow />
-          </ActionButton>
-        )}
-        <ImageWrapper ref={imageRef}>
-          <LoginImage />
-        </ImageWrapper>
-      </LoginImageWrapper>
-      <StyledLoginWrapper>
-        <Header>Hello!</Header>
-        <NavWrapper>
-          <NavItem active={isSignIn} onClick={goSignIn}>
-            SIGN IN
-          </NavItem>
-          <NavItem active={!isSignIn} onClick={goSignUp}>
-            SIGN UP
-          </NavItem>
-        </NavWrapper>
-        {isSignIn ? (
-          <Form>
-            <UsernameInput placeholder="Username" text />
-            <PasswordInput placeholder="Password" type="password" />
-            <StyledButton onClick={signInHandler}>SIGN IN</StyledButton>
-          </Form>
-        ) : (
-          <Form>
-            <UsernameInput placeholder="Username" text />
-            <PasswordInput placeholder="Password" type="password" />
-            <EmailInput placeholder="Email" />
-            <StyledButton onClick={signUpHandler}>SIGN UP</StyledButton>
-          </Form>
-        )}
-        <StyledSpan>Forgot Password?</StyledSpan>
-      </StyledLoginWrapper>
-    </LoginBox>
+    <Modal
+      shouldBeClosedOnOutsideClick={true}
+      isOpen={isLoginAndRegisterModalOpen}
+      handleOnClose={closeModal}
+    >
+      <LoginBox>
+        <ExitButton onClick={closeModal} />
+
+        {/* >>>>>>>>>>>>>>>>>>>>> IMAGE SVG AREA <<<<<<<<<<<<<<<<<<< */}
+
+        <LoginImageWrapper>
+          <ArrowButton handler={chengeSigningMethod}>
+            {isSignIn ? 'Zarejestruj się' : 'Zaloguj się'}
+          </ArrowButton>
+
+          <ImageWrapper ref={imageRef}>
+            <LoginImage />
+          </ImageWrapper>
+        </LoginImageWrapper>
+
+        {/* >>>>>>>>>>>>>>>>>>>>> FORMS AREA <<<<<<<<<<<<<<<<<<<<< */}
+
+        <StyledLoginWrapper>
+          <Header>Witaj!</Header>
+          <NavWrapper>
+            <NavItem active={isSignIn} onClick={chengeSigningMethod}>
+              SIGN IN
+            </NavItem>
+            <NavItem active={!isSignIn} onClick={chengeSigningMethod}>
+              SIGN UP
+            </NavItem>
+          </NavWrapper>
+          {isSignIn ? <LoginForm /> : <RegisterForm />}
+          <StyledSpan>Zapomniałeś hasła?</StyledSpan>
+        </StyledLoginWrapper>
+      </LoginBox>
+    </Modal>
   );
 };
 
