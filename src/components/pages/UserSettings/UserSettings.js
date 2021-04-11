@@ -1,13 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { ReactComponent as PersonIcon } from 'assets/icons/personIcon.svg';
 import {
   UserSettingsWrapper,
   SettingsHeader,
-  HeaderUsername,
-  HeaderUserImage,
   NoUserMessage,
-  HeaderUserWrapper,
   PageName,
 } from './UserSettings.styles';
 import SettingsMainContentBox from 'components/organisms/SettingsMainContentBox/SettingsMainContentBox';
@@ -17,6 +13,7 @@ import {
   openChangeEmailAndPasswordModal,
   closeChangeEmailAndPasswordModal,
 } from 'actions/modals.action';
+import { ReactComponent as SettingsIcon } from 'assets/icons/settingsIcon.svg';
 
 const UserSettings = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
@@ -35,13 +32,9 @@ const UserSettings = () => {
         {currentUser ? (
           <>
             <SettingsHeader>
-              <PageName>Ustawienia</PageName>
-              <HeaderUserWrapper>
-                <HeaderUserImage>
-                  <PersonIcon />
-                </HeaderUserImage>
-                <HeaderUsername>{currentUser.username}</HeaderUsername>
-              </HeaderUserWrapper>
+              <PageName>
+                <SettingsIcon />
+              </PageName>
             </SettingsHeader>
             <SettingsMainContentBox
               setModalType={setModalType}

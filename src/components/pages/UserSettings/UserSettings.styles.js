@@ -6,7 +6,13 @@ export const UserSettingsWrapper = styled.div`
   align-items: center;
   flex-grow: 1;
   ${({ theme }) => theme.media.desktop} {
-    padding: 30px 100px;
+    grid-column: 2/25;
+    grid-row: 3/25;
+    background-color: ${({ theme }) => theme.colors.lightGrey};
+    border-radius: 20px;
+    box-shadow: 0 0 25px -5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
   }
 `;
 
@@ -21,78 +27,37 @@ export const SettingsHeader = styled.header`
   clip-path: circle(900px at 50% -700px);
   ${({ theme }) => theme.media.desktop} {
     clip-path: none;
-    height: 60px;
-    margin: 10px 30px 60px;
-    position: relative;
     background: transparent;
     justify-content: flex-start;
-    &::before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        rgba(247, 248, 250, 1) 0%,
-        rgba(210, 196, 255, 1) 50%,
-        rgba(247, 248, 250, 1) 100%
-      );
-      position: absolute;
-      bottom: -40px;
-    }
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 `;
 
-export const PageName = styled.h1`
+export const PageName = styled.div`
   display: none;
   ${({ theme }) => theme.media.desktop} {
-    display: block;
-    color: ${({ theme }) => theme.colors.mainDark};
-    margin-left: 30px;
-    position: relative;
-    &::before {
-      content: '';
-      display: block;
-      width: 10px;
-      height: 10px;
-      position: absolute;
-      left: -15px;
-      top: 50%;
-      transform: translateY(-50%);
-      border-radius: 100%;
-      background: ${({ theme }) => theme.colors.mainGradientToTop};
-    }
-  }
-`;
-
-export const HeaderUserWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  ${({ theme }) => theme.media.desktop} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ${({ theme }) => theme.colors.darkGrey};
+    width: 160px;
+    height: 160px;
     position: absolute;
-    right: 5%;
-  }
-`;
-
-export const HeaderUsername = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.xxl};
-  ${({ theme }) => theme.media.desktop} {
-    font-size: ${({ theme }) => theme.fontSize.m};
-    color: ${({ theme }) => theme.colors.mainDark};
-  }
-`;
-
-export const HeaderUserImage = styled.div`
-  width: 65px;
-  margin-right: 30px;
-  svg {
-    path.bdeb749e-438d-4bd1-b678-b7b793f837b0 {
-      fill: ${({ theme }) => theme.colors.lightGrey};
+    top: 0;
+    right: 0;
+    border-radius: 100%;
+    transform: translate(50%, -50%);
+    svg {
+      width: 20%;
+      margin: 40% 40% 0 0;
+      path {
+        fill: ${({ theme }) => theme.colors.mainColor};
+      }
     }
-  }
-  ${({ theme }) => theme.media.desktop} {
-    width: 35px;
-    margin-right: 15px;
   }
 `;
 

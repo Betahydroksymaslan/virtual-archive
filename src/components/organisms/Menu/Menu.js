@@ -23,12 +23,14 @@ import {
   openLoginAndRegisterModal,
   closeLoginAndRegisterModal,
 } from 'actions/modals.action';
+import UserInfo from 'components/molecules/UserInfo/UserInfo';
+import { useMedia } from 'helpers/useMedia';
 
 const Menu = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const isMobileView = useMedia('(max-width: 500px)');
   const dispatch = useDispatch();
 
   let menuWrapperBack = useRef(null);
@@ -65,6 +67,13 @@ const Menu = () => {
       <MenuWrapperBack ref={(el) => (menuWrapperBack = el)}>
         <MenuWrapper ref={(el) => (menuWrapper = el)}>
           <AppIcon />
+
+          {isMobileView ? null : (
+            <UserInfo
+              username={currentUser?.username}
+              email={currentUser?.email}
+            />
+          )}
 
           <MenuLinksList menuOff={menuOff} />
 

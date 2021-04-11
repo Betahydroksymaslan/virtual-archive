@@ -2,14 +2,15 @@ import styled from 'styled-components';
 
 export const ContentBox = styled.div`
   width: 100%;
+  height: 100%;
   transform: translateY(-30px);
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   ${({ theme }) => theme.media.desktop} {
     transform: translateY(0);
-    margin-top: 20px;
+    margin-bottom: 0;
+    padding: 5% 5%;
   }
 `;
 
@@ -23,36 +24,32 @@ export const CategoryBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  svg {
+    display: none;
+  }
   ${({ theme }) => theme.media.desktop} {
     width: 90%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding-left: 5%;
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
     position: relative;
     box-shadow: none;
+    align-items: flex-start;
     background-color: transparent;
-    &::before {
-      content: '';
+    svg {
+      margin-right: 10px;
       display: block;
-      height: 15px;
-      width: 5px;
-      position: absolute;
-      border-radius: 5px;
-      left: 0;
-      background: ${({ theme }) => theme.colors.mainGradientToTop};
-      transition: height 0.2s ease;
-    }
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.inputBorderLight};
-    }
-    &:hover::before {
-      height: 100%;
+      width: 30px;
+      height: 30px;
+      path {
+        fill: ${({ theme }) => theme.colors.grey};
+      }
     }
   }
 `;
+
+export const ProprtyIconNameBox = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`
 
 export const ContentBoxName = styled.span`
   font-size: ${({ theme }) => theme.fontSize.m};
@@ -63,8 +60,9 @@ export const ContentBoxName = styled.span`
   user-select: none;
   ${({ theme }) => theme.media.desktop} {
     margin: 0;
-    width: 100%;
     font-weight: 400;
+    text-align: center;
+    align-self: center;
   }
 `;
 
@@ -75,10 +73,10 @@ export const ContentBoxProperty = styled.span`
   margin-bottom: 20px;
   user-select: none;
   ${({ theme }) => theme.media.desktop} {
-    margin: 0;
-    font-size: ${({ theme }) => theme.fontSize.l};
-    width: 100%;
+    margin: 0 0 0 15px;
+    font-size: ${({ theme }) => theme.fontSize.m};
     font-weight: 400;
+    text-align: center;
   }
 `;
 
@@ -90,11 +88,9 @@ export const ChangePasswordEmailButton = styled.button`
   background-color: transparent;
   outline: none;
   ${({ theme }) => theme.media.desktop} {
-    margin: 0;
+    margin: 15px 0 0 15px;
     padding: 0;
-    position: absolute;
     font-size: ${({ theme }) => theme.fontSize.s};
-    right: 10%;
     border-bottom: 1px solid transparent;
     transition: border-bottom-color 0.2s ease;
     &:hover {

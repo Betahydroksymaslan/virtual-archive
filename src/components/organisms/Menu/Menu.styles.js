@@ -11,11 +11,9 @@ export const MenuWrapperBack = styled.nav`
   backdrop-filter: blur(7px);
   visibility: hidden;
   ${({ theme }) => theme.media.desktop} {
-    flex-basis: 220px;
-    height: 100vh;
     position: static;
-    left: 0;
     background-color: transparent;
+    grid-row: 1 /-1;
   }
 `;
 
@@ -34,11 +32,12 @@ export const MenuWrapper = styled.div`
     visibility: visible;
     margin: 0;
     border-radius: 0;
-    background-color: rgb(21, 27, 38);
-    justify-content: space-between;
+    background-color: transparent;
     width: 100%;
     height: 100%;
     box-shadow: none;
+    display: grid;
+    grid-template: repeat(20, 1fr) / 1fr;
   }
 `;
 
@@ -74,15 +73,14 @@ export const LoginLink = styled.div`
   font-size: 22px;
   font-weight: 500;
   display: flex;
+  color: ${({ theme }) => theme.colors.mainDark};
   align-items: center;
   justify-content: center;
   ${({ theme }) => theme.media.desktop} {
-    font-size: 14px;
-    padding: 15px 0 15px 25px;
-    margin: 10px 0;
-    color: ${({ theme }) => theme.colors.lightGrey};
+    font-size: ${({ theme }) => theme.fontSize.s};
+    padding: 0;
     transition: opacity 0.3s ease;
-    justify-content: flex-start;
+    grid-row: 19 / -1;
     &:hover {
       cursor: pointer;
       opacity: 0.6;

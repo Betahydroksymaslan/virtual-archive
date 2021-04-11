@@ -6,16 +6,16 @@ export const MenuList = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
-  padding: 50px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   ${({ theme }) => theme.media.desktop} {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    border-top-color: grey;
-    border-bottom-color: grey;
+    display: grid;
+    width: fit-content;
+    border: none;
+    grid-template-columns: 80px;
+    grid-auto-rows: 80px;
+    margin: 0 auto;
+    grid-row: 8 / 18;
   }
 `;
 
@@ -42,39 +42,51 @@ export const Link = styled(NavLink)`
     }
   }
   ${({ theme }) => theme.media.desktop} {
-    font-size: 14px;
+    font-size: ${({ theme }) => theme.fontSize.xs};
     margin: 0;
-    color: ${({ theme }) => theme.colors.lightGrey};
-    padding: 10px 0 10px 30px;
-    transition: all 0.3s ease;
+    padding: 0;
+    color: ${({ theme }) => theme.colors.grey};
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
     cursor: pointer;
-    line-height: 1.6em;
-    &::before {
-      content: '';
-      display: block;
-      width: 10px;
-      height: 10px;
-      background: ${({ theme }) => theme.colors.mainGradient};
-      position: absolute;
-      top: 50%;
-      transform: translate(-30px, -50%);
-      left: 10px;
-      border-radius: 100%;
-      transition: transform 0.3s ease-in-out;
-    }
-    &.active {
-      background-color: rgba(255, 255, 255, 0.03);
-    }
-    &.active::before {
-      transform: translate(0, -50%);
-    }
-    svg {
-      path {
-        fill: #6f7782;
+    &:hover {
+      color: ${({ theme }) => theme.colors.mainColor};
+      svg {
+        path {
+          fill: ${({ theme }) => theme.colors.mainColor};
+        }
       }
     }
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+    &:active {
+      background-color: transparent;
+    }
+    &.active {
+      background-color: ${({ theme }) => theme.colors.lightGrey};
+      width: 90px;
+      height: 90px;
+      border-radius: 10px;
+      z-index: 2;
+      transform: translate(-5px, -5px);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      color: ${({ theme }) => theme.colors.mainColor};
+      svg {
+        path {
+          fill: ${({ theme }) => theme.colors.mainColor};
+        }
+      }
+    }
+    svg {
+      width: 20px;
+      margin: 0 0 10px 0;
+      path {
+        transition: fill 0.3s ease;
+        fill: ${({ theme }) => theme.colors.grey};
+      }
     }
   }
 `;

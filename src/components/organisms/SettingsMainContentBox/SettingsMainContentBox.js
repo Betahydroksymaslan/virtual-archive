@@ -6,7 +6,11 @@ import {
   ContentBoxProperty,
   ChangePasswordEmailButton,
   CategoryBox,
+  ProprtyIconNameBox,
 } from './SettingsMainContentBox.style';
+import { ReactComponent as PasswordIcon } from 'assets/icons/passwordIcon.svg';
+import { ReactComponent as RoleIcon } from 'assets/icons/roleIcon.svg';
+import { ReactComponent as EmailIcon } from 'assets/icons/emailIcon.svg';
 
 const convertUserRole = (role) => {
   if (!role) return;
@@ -33,7 +37,10 @@ const SettingsMainContentBox = ({ openModal, setModalType, currentUser }) => {
   return (
     <ContentBox>
       <CategoryBox>
-        <ContentBoxName>Email</ContentBoxName>
+        <ProprtyIconNameBox>
+          <EmailIcon />
+          <ContentBoxName>Email</ContentBoxName>
+        </ProprtyIconNameBox>
         <ContentBoxProperty>{currentUser.email}</ContentBoxProperty>
         <ChangePasswordEmailButton onClick={openEmailChange}>
           Zmień email
@@ -41,14 +48,20 @@ const SettingsMainContentBox = ({ openModal, setModalType, currentUser }) => {
       </CategoryBox>
 
       <CategoryBox>
-        <ContentBoxName>Hasło</ContentBoxName>
+        <ProprtyIconNameBox>
+          <PasswordIcon />
+          <ContentBoxName>Hasło</ContentBoxName>
+        </ProprtyIconNameBox>
         <ChangePasswordEmailButton onClick={openPasswordChange}>
           Zmień hasło
         </ChangePasswordEmailButton>
       </CategoryBox>
 
       <CategoryBox>
-        <ContentBoxName>Rola</ContentBoxName>
+        <ProprtyIconNameBox>
+          <RoleIcon />
+          <ContentBoxName>Rola</ContentBoxName>
+        </ProprtyIconNameBox>
         <ContentBoxProperty>
           {convertUserRole(currentUser.role)}
         </ContentBoxProperty>

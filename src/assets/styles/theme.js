@@ -5,7 +5,7 @@ export const theme = {
     mainColor: '#9475f4',
     mainDarkFont: '#747578',
     lightGrey: '#F7F8FA',
-    darkGrey: '#f5f7f8',
+    darkGrey: '#EFEFEF',
     mainGradient: 'linear-gradient(to top left, #6f66ed, #ac7df7)',
     mainGradientHover: 'linear-gradient(to bottom right, #6f66ed, #ac7df7)',
     mainGradientToLeft: 'linear-gradient(to left, #6f66ed, #ac7df7)',

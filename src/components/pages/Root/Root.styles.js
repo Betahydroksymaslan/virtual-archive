@@ -9,6 +9,9 @@ export const StyledRoot = styled.div`
   align-items: stretch;
   position: relative;
   ${({ theme }) => theme.media.desktop} {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 220px repeat(25, 1fr);
+    grid-template-rows: repeat(25, 1fr);
+    background-color: ${({ theme }) => theme.colors.darkGrey};
   }
 `;

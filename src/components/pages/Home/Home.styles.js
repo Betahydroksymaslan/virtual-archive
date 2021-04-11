@@ -7,4 +7,8 @@ export const HomeWrapper = styled.div`
   align-items: center;
   flex-grow: 1;
   position: relative;
+  ${({ theme }) => theme.media.desktop} {
+    grid-column: 2;
+    grid-row: 1;
+  }
 `;

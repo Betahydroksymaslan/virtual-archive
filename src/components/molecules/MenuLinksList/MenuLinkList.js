@@ -3,15 +3,20 @@ import PropTypes from 'prop-types';
 import { ReactComponent as SettingsIcon } from 'assets/icons/settingsIcon.svg';
 import { ReactComponent as HomeIcon } from 'assets/icons/homeIcon.svg';
 import { ReactComponent as UsersIcon } from 'assets/icons/usersIcon.svg';
-//import { NavLink } from 'react-router-dom';
+import { ReactComponent as DocumentIcon } from 'assets/icons/documentIcon.svg';
 import { MenuList, MenuLink, Link } from './MenuLinksList.styles';
 
 const MenuLinkList = ({ menuOff }) => {
   const menuLinks = [
     {
-      name: 'Strona główna',
+      name: 'Start',
       linkTo: '/home',
       icon: <HomeIcon />,
+    },
+    {
+      name: 'Dokumenty',
+      linkTo: '/yjt',
+      icon: <DocumentIcon />,
     },
     {
       name: 'Pracownicy',
@@ -19,7 +24,7 @@ const MenuLinkList = ({ menuOff }) => {
       icon: <UsersIcon />,
     },
     {
-      name: 'Moje konto',
+      name: 'Konto',
       linkTo: '/userSettings',
       icon: <SettingsIcon />,
     },
